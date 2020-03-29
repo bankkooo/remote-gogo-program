@@ -28,10 +28,13 @@ var boolCompare =[];
 var newCmd = true;
 var valuesensor ;
 var sensorStackForIf = [];
+var gblValue = [];
 var gblBuffer1 = [];
 var gblBuffer2 = [];
 var gblBuffer3 = [];
 var gblBuffer = [];
+var aomuntOfLenArray =10 
+var gblVarValue = new Array(aomuntOfLenArray);
 
 var gblBufferTest = [];
 var gblString = [];
@@ -1340,6 +1343,25 @@ export default{
               }else {
                   boolCompare.push(false);
               }
+              break;
+          case 35:
+              //console.log("set Var 35");
+              //console.log("imm1byte => ",  imm1byte);
+              var varValue = imm1byte.pop();
+              var varIndex = imm1byte.pop();
+              // imm1byte.push(parseInt(varValue, 10));
+              gblVarValue[varIndex] = varValue
+              //console.log("gblVarValue[",varIndex,"] : ",  gblVarValue[varIndex]);
+              //console.log("imm1byte =< ",  imm1byte);
+              break;
+          case 36:
+              //console.log("set Var 36");
+              //console.log("gblVarValue => ",  gblVarValue);
+              var varIndex = imm1byte.shift();
+              var varDelete = imm1byte.shift();
+              imm1byte.push(parseInt(gblVarValue[varIndex], 10));
+              //console.log("imm1byte =< ",  imm1byte);
+              //console.log("gblVarValue[",varIndex,"] : ",  gblVarValue[varIndex]);
               break;
           case vm.OP_GREATER_OR_EQUAL:
               //console.log("compare 61 : OP_GREATER_OR_EQUAL");

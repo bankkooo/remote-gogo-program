@@ -17,6 +17,7 @@
 </template>
 <script>
 import deviceControl from 'services/deviceControl'
+import { mapGetters, mapMutations } from 'vuex'
 
 var labNumber = 0
 export default {
@@ -25,6 +26,7 @@ export default {
       //console.log(labNumber == numb)
       return labNumber
     }*/
+    ...mapGetters(['labStatus']),
   },
   data() {
     return {
@@ -36,7 +38,7 @@ export default {
       var mQtt_ch
       if(number === 1){
         mQtt_ch = 'Lab1'
-        window.open("https://youtu.be/AXkZo3yLHNg?t=1236", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+        window.open("https://zoom.us/j/3029797476", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
       }else if(number === 2){
         mQtt_ch = 'Lab2'
         window.open("https://youtu.be/IV1mC9yDY4o?t=23", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
