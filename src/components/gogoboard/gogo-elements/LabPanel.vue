@@ -20,6 +20,8 @@ import deviceControl from 'services/deviceControl'
 import { mapGetters, mapMutations } from 'vuex'
 
 var labNumber = 0
+var msg = []
+msg.push('open')
 export default {
   computed: {
     /*isActive () {
@@ -37,11 +39,19 @@ export default {
     switchLab (number) {
       var mQtt_ch
       if(number === 1){
+        mQtt_ch = 'site/demo1'
+        localStorage.setItem("mQtt_ch", mQtt_ch);
+        console.log(number,":",mQtt_ch)
+        deviceControl.mqttsending(msg)
+        window.open("https://zoom.us/j/7602679734", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
         mQtt_ch = 'Lab1'
-        window.open("https://zoom.us/j/3029797476", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
       }else if(number === 2){
-        mQtt_ch = 'Lab2'
+        mQtt_ch = 'site/demo2'
+        localStorage.setItem("mQtt_ch", mQtt_ch);
+        console.log(number,":",mQtt_ch)
+        deviceControl.mqttsending(msg)
         window.open("https://youtu.be/IV1mC9yDY4o?t=23", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+        mQtt_ch = 'Lab2'
       }else if(number === 3){
         mQtt_ch = 'Lab3'
       }

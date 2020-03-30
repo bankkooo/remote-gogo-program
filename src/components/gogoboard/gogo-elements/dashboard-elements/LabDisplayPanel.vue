@@ -155,7 +155,7 @@ export default {
       console.log(val+":"+this.isLab)
     },*/
     parentData: function (val) {
-      switch (val) {
+      /*switch (val) {
         case "lab-1-active":
           this.labActive_1 = true;
           //console.log('1:'+this.labActive_1)
@@ -180,6 +180,28 @@ export default {
           this.labActive_3 = false;
           //console.log('3:'+this.labActive_3)
           break;
+      }*/
+      console.log('val:'+val)
+      if (val=="lab-1-active"){
+        this.labActive_1 = true;
+        console.log('1:'+this.labActive_1)
+      }else if(val=="lab-1-inactive"){
+        this.labActive_1 = false;
+        console.log('1:'+this.labActive_1)
+      }
+      if (val=="lab-2-active"){
+        this.labActive_2 = true;
+        console.log('1:'+this.labActive_1)
+      }else if(val=="lab-2-inactive"){
+        this.labActive_2 = false;
+        console.log('1:'+this.labActive_1)
+      }
+      if (val=="lab-3-active"){
+        this.labActive_3 = true;
+        console.log('1:'+this.labActive_1)
+      }else if(val=="lab-3-inactive"){
+        this.labActive_3 = false;
+        console.log('1:'+this.labActive_1)
       }
     }
   },
