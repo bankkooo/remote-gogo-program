@@ -19,10 +19,10 @@ const auth = firebase.auth()
 const currentUser = auth.currentUser
 
 // date issue fix according to firebase
-const settings = {
-  timestampsInSnapshots: true
+/*const settings = {
+  timestampsInSnapshots: false
 }
-db.settings(settings)
+db.settings(settings)*/
 
 // firebase collections
 const usersCollection = db.collection('users')

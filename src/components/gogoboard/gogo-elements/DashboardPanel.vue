@@ -62,7 +62,7 @@ export default {
     return {
       A: 10,
       counter: 0,
-      fromChild: '1',
+      fromChild: 1,
       fromDetail: '', // This value is set to the value emitted by the child
       toSeeDetail: '',
     }

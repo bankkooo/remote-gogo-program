@@ -9,15 +9,15 @@
           <span>{{ $t('navbar.gogoboard') }}</span>
         </span>
       </sidebar-link>
-
+      <!--
       <sidebar-link
         :to="{ name: 'raspberry' }">
         <span slot="title">
-          <!-- <i class="sidebar-menu-item-icon fa fa-desktop"></i> -->
+          <i class="sidebar-menu-item-icon fa fa-desktop"></i>
           <pi-icon :size="18" />
           <span style="position: relative;left: 16px;">{{ $t('navbar.raspberrypi') }}</span>
         </span>
-      </sidebar-link>
+      </sidebar-link>-->
       
       <sidebar-link
         :to="{ name: 'program' }">

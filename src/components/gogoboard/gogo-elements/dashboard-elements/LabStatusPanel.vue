@@ -53,7 +53,7 @@ import { setInterval } from 'timers'
 export default {
   name: 'lab-detail-panel',
   props: { 
-    parentData: String||Number,
+    parentData: Number,
     parentData2: String
   },
   components: {

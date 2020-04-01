@@ -257,7 +257,7 @@ export default {
     // color: #fff;
     // background-color: #0099de;
 
-    // background-color: #1cb8ff;
+    //background-color:#fff;
     color: $cc-dark-blue;
   }
 }
