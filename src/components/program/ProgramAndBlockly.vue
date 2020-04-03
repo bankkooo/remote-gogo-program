@@ -78,7 +78,7 @@ import Paho from './paho-mqtt.js'
               <i class="fa fa-inverse fa-stop"></i>
             </div>
           </button>&#160;
-          <button @click="stopLoop()" type="button" class="btn btn-warning btn-micro" v-bind:class="{ 'focus': isCodeMode }">
+          <button @click="stopLoop()"  class="btn btn-warning btn-micro d-none d-lg-inline-flex btn-download" v-bind:class="{ 'focus': isCodeMode }">
               <i class="fa fa-ban"></i> STOP LOOP
             </button>
           <!-- Remote Lab -->
@@ -97,7 +97,12 @@ import Paho from './paho-mqtt.js'
             v-tooltip.top="$t('program.footer.download')">
             <i class="fa fa-download"></i>
           </button> -->
-          <button class="btn btn-danger btn-with-icon rounded-icon btn-micro btn-run d-inline d-lg-none" v-tooltip.top.end="$t('program.footer.download')" @click="handleDownloadToBoard()">
+          <button class="btn btn-warning btn-with-icon rounded-icon btn-micro btn-run d-inline d-lg-none" v-tooltip.top.end="$t('program.footer.download')" @click="stopLoop()">
+            <div class="button-motor-control">
+              <i class="fa fa-ban"></i>
+            </div>
+          </button>
+          <button class="btn btn-danger btn-with-icon rounded-icon btn-micro btn-run d-inline d-lg-none" v-tooltip.top.end="$t('program.footer.download')" @click="handleDownloadToBoard_reMoteLab()">
             <div class="button-motor-control">
               <i class="fa fa-download"></i>
             </div>
