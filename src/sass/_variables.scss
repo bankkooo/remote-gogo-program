@@ -2,6 +2,12 @@
 $cc-green: #a5d442;
 $cc-blue: #02a8f4;
 $cc-light-blue: #1cb8ff;
+$cc-remotelab-blue: #82a4ca;
+$cc-remotelab-org: #d58812;
+$cc-remotelab-org2: #e39a2b;
+$cc-remotelab-ylw: #fee042;
+
+$cc-remotelab-tomato: #f25c69;
 $cc-dark-blue: #01354c;
 $cc-dark-pink: #630031;
 $cc-pink: #db3f8d;
@@ -71,8 +77,8 @@ $theme-colors: (
 // $body-bg: $light-gray;
 $body-bg: $white;
 
-// $top-nav-bg: $darkest-gray;
-$top-nav-bg: $cc-blue;
+$top-nav-bg: $cc-remotelab-tomato;
+// $top-nav-bg: $cc-blue;
 $body-color: $vue-darkest-blue !default;
 $layout-padding: 24px;
 $layout-padding-right: 44px;

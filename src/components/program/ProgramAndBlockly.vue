@@ -78,7 +78,7 @@ import Paho from './paho-mqtt.js'
               <i class="fa fa-inverse fa-stop"></i>
             </div>
           </button>&#160;
-          <button @click="stopLoop()"  class="btn btn-warning btn-micro d-none d-lg-inline-flex btn-download" v-bind:class="{ 'focus': isCodeMode }">
+          <button @click="stopLoop()"  class="btn btn-lab btn-micro d-none d-lg-inline-flex btn-download" v-bind:class="{ 'focus': isCodeMode }">
               <i class="fa fa-ban"></i> STOP LOOP
             </button>
           <!-- Remote Lab -->
@@ -97,7 +97,7 @@ import Paho from './paho-mqtt.js'
             v-tooltip.top="$t('program.footer.download')">
             <i class="fa fa-download"></i>
           </button> -->
-          <button class="btn btn-warning btn-with-icon rounded-icon btn-micro btn-run d-inline d-lg-none" v-tooltip.top.end="$t('program.footer.download')" @click="stopLoop()">
+          <button class="btn btn-lab btn-with-icon rounded-icon btn-micro btn-run d-inline d-lg-none" v-tooltip.top.end="$t('program.footer.download')" @click="stopLoop()">
             <div class="button-motor-control">
               <i class="fa fa-ban"></i>
             </div>
@@ -700,7 +700,7 @@ export default {
           // this.doGogoCmdObj({cmd: 'logoRun'})
         })
         this.saveCacheWorksapce()
-        this.handleSaveForAnalytics()
+        //this.handleSaveForAnalytics()
       }else{
         this.$swalNotSelect({})
       }
@@ -1001,5 +1001,9 @@ svg.blocklySvg {
 .sweetCancelButtonClass {
   line-height: 1 !important;
   border-radius: 1.875rem !important;
+}
+
+.btn-lab {
+  background-color: #d99414;
 }
 </style>

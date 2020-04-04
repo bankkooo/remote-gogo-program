@@ -225,7 +225,8 @@ export default {
 
 #project-name {
   .bar {
-    border-color: #a8e2fd;
+    //border-color: #a8e2fd;
+    border-color: #e1e1df;
 
     &:before {
       background: $cc-dark-blue;
@@ -245,7 +246,8 @@ export default {
 
 <style lang="scss">
 .custom-link {
-  color: #a8e2fd;
+  //color: #a8e2fd;
+  color: #e1e1df;
   padding-left: 8px;
   padding-right: 8px;
   // background-color: #1cb8ff;

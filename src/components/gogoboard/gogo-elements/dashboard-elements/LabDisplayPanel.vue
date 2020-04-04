@@ -70,13 +70,15 @@
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
           v-tooltip.top="$t('gogoboard.motor.'+(motors[0].isActive ? 'click_to_unselect' : 'click_to_select')) + ' A'"
           v-bind:class="[labActive_3 ? 'lab-active' : 'lab-inactive']"
-          v-on:click="selectLab(3)">
+          v-on:click="selectLab(3)" @click="isSelect = 3">
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>
           <i class="lab-icon lab-icon-1 icon-lab-3 fa-stack-1x "></i>
+          <i class="lab-select fa fa-stack-2x"
+            v-bind:class="[ isSelect == 3 ? 'fa-circle-o-notch fa-spin' : '' ]"></i>
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
-            true ? 'fa-ban' : '',// ban and unban
-            true ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
+            false ? 'fa-ban' : '',// ban and unban
+            false ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
             ]"></i>
         </a>
         <div class="row justify-content-center">

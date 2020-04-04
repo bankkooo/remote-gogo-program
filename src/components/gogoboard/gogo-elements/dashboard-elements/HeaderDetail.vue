@@ -8,13 +8,13 @@
       :cancelClass="'none'" :cancelText="'modal.cancel' | translate"
       :headerBgColor="'#3298a8'"
       >
-      <div slot="title"><i class="fa fa-car"></i> {{'gogoboard.labdetail_panel.lab' + isLab| translate}}</div>
+      <div slot="title"><i class="fa fa-circle"></i> {{'gogoboard.labdetail_panel.lab' + isLab| translate}}</div>
 
       <!--<div class="row justify-content-left">
         <img src="/static/gogo-img/demo-carControl.png" width="100" height="110">
       </div>-->
 
-        <div class="row">
+        <div class="row" v-if="isLab==1">
             <div class="col-sm-3 text-right" style="background-color:lightcyan;"><h5>
                 <img src="/static/gogo-img/demo-carControl.png" width="150" height="160"></h5>
             </div>
@@ -23,21 +23,26 @@
             <div class="col-sm-6 text-right space" style="background-color:lightcyan;"><h5><p>{{ 'gogoboard.labdetail_panel.lab1_detail.tool' | translate}} :</p></h5></div>
             <div class="col-sm-6 space" style="background-color:lavender;"><h6><p>{{ 'gogoboard.labdetail_panel.lab1_detail.tool1' | translate}}<br>
             {{ 'gogoboard.labdetail_panel.lab1_detail.tool2' | translate}}</p></h6></div>
-
-            <!--<div class="col-lg-2 text-left" style="background-color:green;"><h6><p>{{ 'gogoboard.labdetail_panel.lab1_detail.head' | translate}} :</p></h6>
-                <div class="row">
-                <div class="col-sm-12 text-left" style="background-color:blue;">
-                    <h6><p>{{ 'gogoboard.labdetail_panel.lab1_detail.tool' | translate}} :</p></h6>
-                </div>
-                </div>
+        </div>
+        <div class="row" v-else-if="isLab==2">
+            <div class="col-sm-3 text-right" style="background-color:lightcyan;"><h5>
+                <img src="/static/gogo-img/demo-lightControl.png" width="150" height="160"></h5>
             </div>
-            <div class="col-sm-6 text-left" style="background-color:white;"><h6><p>{{ 'gogoboard.labdetail_panel.lab1_detail.head1' | translate}}</p></h6>
-                <div class="row">
-                <div class="col-sm-12 text-left">
-                    <h6><p>{{ 'gogoboard.labdetail_panel.lab1_detail.tool1' | translate}}</p></h6>
-                </div>
-                </div>
-            </div>-->
+            <div class="col-sm-3 text-right space" style="background-color:lightcyan;"><h5><p>{{ 'gogoboard.labdetail_panel.lab2_detail.head' | translate}} :</p></h5></div>
+            <div class="col-sm-6 space" style="background-color:lavender;"><h6><p>{{ 'gogoboard.labdetail_panel.lab2_detail.head1' | translate}}</p></h6></div>
+            <div class="col-sm-6 text-right space" style="background-color:lightcyan;"><h5><p>{{ 'gogoboard.labdetail_panel.lab2_detail.tool' | translate}} :</p></h5></div>
+            <div class="col-sm-6 space" style="background-color:lavender;"><h6><p>{{ 'gogoboard.labdetail_panel.lab2_detail.tool1' | translate}}<br>
+            {{ 'gogoboard.labdetail_panel.lab2_detail.tool2' | translate}}</p></h6></div>
+        </div>
+        <div class="row" v-else-if="isLab==3">
+            <div class="col-sm-3 text-right" style="background-color:lightcyan;"><h5>
+                <img src="/static/gogo-img/demo-balancing.png" width="150" height="160"></h5>
+            </div>
+            <div class="col-sm-3 text-right space" style="background-color:lightcyan;"><h5><p>{{ 'gogoboard.labdetail_panel.lab3_detail.head' | translate}} :</p></h5></div>
+            <div class="col-sm-6 space" style="background-color:lavender;"><h6><p>{{ 'gogoboard.labdetail_panel.lab3_detail.head1' | translate}}</p></h6></div>
+            <div class="col-sm-6 text-right space" style="background-color:lightcyan;"><h5><p>{{ 'gogoboard.labdetail_panel.lab3_detail.tool' | translate}} :</p></h5></div>
+            <div class="col-sm-6 space" style="background-color:lavender;"><h6><p>{{ 'gogoboard.labdetail_panel.lab3_detail.tool1' | translate}}<br>
+            {{ 'gogoboard.labdetail_panel.lab3_detail.tool2' | translate}}</p></h6></div>
         </div>
 
       <hr width="50%">

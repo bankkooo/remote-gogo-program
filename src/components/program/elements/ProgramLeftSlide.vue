@@ -2,14 +2,14 @@
   <div class="program-left-slide">
     <vuestic-widget class="chat-widget dashboard-widget" 
         :icon="'a fa-check-circle-o'"
-        :headerBgColor="'#4287f5'" :headerTextColor="'#fff0dc'"
+        :headerBgColor="'#bf3939'" :headerTextColor="'#fff0dc'"
         :headerText="$t('gogoboard.headers.dashboards')">
         <dashboard-panel :irValue="gogo.irValue"></dashboard-panel>
     </vuestic-widget>
 
     <vuestic-widget class="chat-widget lab-widget" 
         :icon="'fa fa-youtube-play'"
-        :headerBgColor="'#4287f5'" :headerTextColor="'#fff0dc'"
+        :headerBgColor="'#bf3939'" :headerTextColor="'#fff0dc'"
         :headerText="$t('gogoboard.headers.videos')">
         <lab-panel :irValue="gogo.irValue"></lab-panel>
     </vuestic-widget>
@@ -76,4 +76,6 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 </style>

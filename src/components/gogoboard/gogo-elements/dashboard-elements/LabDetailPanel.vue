@@ -21,7 +21,7 @@
                     <label class="control-label" for="input-w-btn">{{'gogoboard.labdetail_panel.name'
                         | translate}}</label><i class="bar"></i>
                     </div>
-                    <div class="btn btn-micro btn-primary" v-on:click="enterUsername()" >
+                    <div class="btn btn-micro btn-lab2 btn-font" v-on:click="enterUsername()" >
                     {{'gogoboard.labdetail_panel.enter' | translate}}
                     </div>
                 </div>
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-sm-12 text-center">
                 {{'gogoboard.labdetail_panel.see_detail' | translate}} :
-                <div class="btn btn-micro btn-warning"  @click="etr()" v-on:click="callDetail()">
+                <div class="btn btn-micro btn-lab"  @click="etr()" v-on:click="callDetail()">
                     {{'gogoboard.labdetail_panel.detail' | translate}}
                 </div>
             </div>
@@ -113,4 +113,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.btn-lab {
+  background-color: #d99414;
+}
+.btn-lab2 {
+  background-color: #90d948;
+}
+.btn-font {
+  color: #ffffff;
+}
+
+
 </style>

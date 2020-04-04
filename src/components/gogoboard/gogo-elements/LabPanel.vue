@@ -2,13 +2,13 @@
 <div class="lab-panel">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <div class="btn btn-micro btn-primary col-sm-12" @click="switchLab(1)" v-on:click="isActive = 1" v-bind:class="{ 'focus': isActive == 1}">
+        <div class="btn btn-micro btn-lab col-sm-12" @click="switchLab(1)" v-on:click="isActive = 1" v-bind:class="{ 'focus': isActive == 1}">
           {{'gogoboard.lab_panel.lab1' | translate}}
         </div>
-        <div class="btn btn-micro btn-primary col-sm-12 top-buffer" @click="switchLab(2)" v-on:click="isActive = 2" v-bind:class="{ 'focus': isActive == 2}">
+        <div class="btn btn-micro btn-lab col-sm-12 top-buffer" @click="switchLab(2)" v-on:click="isActive = 2" v-bind:class="{ 'focus': isActive == 2}">
           {{'gogoboard.lab_panel.lab2' | translate}}
         </div>
-        <div class="btn btn-micro btn-primary col-sm-12 top-buffer" @click="switchLab(3)" v-on:click="isActive = 3" v-bind:class="{ 'focus': isActive == 3}">
+        <div class="btn btn-micro btn-lab col-sm-12 top-buffer" @click="switchLab(3)" v-on:click="isActive = 3" v-bind:class="{ 'focus': isActive == 3}">
           {{'gogoboard.lab_panel.lab3' | translate}}
         </div>
       </div>
@@ -65,5 +65,8 @@ export default {
 <style lang="scss" scoped>
 .top-buffer { 
   margin-top:8px;
+}
+.btn-lab {
+  background-color: #90d948;
 }
 </style>

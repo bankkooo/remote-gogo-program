@@ -141,4 +141,8 @@ export default {
 </script>
 
 <style lang="scss">
+
+.btn-lab {
+  background-color: #d99414;
+}
 </style>
