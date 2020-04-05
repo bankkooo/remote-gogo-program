@@ -19,12 +19,12 @@
 
 
     <!--<label for="child-input">Child input: </label>
+    v-tooltip.top="$t('gogoboard.motor.'+(motors[0].isActive ? 'click_to_unselect' : 'click_to_select')) + ' A'"
     <input id="child-input" type="text" name="msg" v-model="childMessage" v-on:keyup="emitToParent">-->
     <div class="row justify-content-around">
 
       <div class="lab-area">
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
-          v-tooltip.top="$t('gogoboard.motor.'+(motors[0].isActive ? 'click_to_unselect' : 'click_to_select')) + ' A'"
           v-bind:class="[labActive_1 ? 'lab-active' : 'lab-inactive']"
           v-on:click="selectLab(1)" @click="isSelect = 1" >
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>
@@ -48,7 +48,6 @@
 
       <div class="lab-area">
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
-          v-tooltip.top="$t('gogoboard.motor.'+(motors[0].isActive ? 'click_to_unselect' : 'click_to_select')) + ' A'"
           v-bind:class="[labActive_2 ? 'lab-active' : 'lab-inactive']"
           v-on:click="selectLab(2)" @click="isSelect = 2">
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>
@@ -68,7 +67,6 @@
 
       <div class="lab-area">
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
-          v-tooltip.top="$t('gogoboard.motor.'+(motors[0].isActive ? 'click_to_unselect' : 'click_to_select')) + ' A'"
           v-bind:class="[labActive_3 ? 'lab-active' : 'lab-inactive']"
           v-on:click="selectLab(3)" @click="isSelect = 3">
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>

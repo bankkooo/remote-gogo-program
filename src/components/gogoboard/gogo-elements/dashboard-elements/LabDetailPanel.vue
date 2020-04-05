@@ -115,7 +115,7 @@ export default {
 <style lang="scss" scoped>
 
 .btn-lab {
-  background-color: #d99414;
+  background-color: #fee042;
 }
 .btn-lab2 {
   background-color: #90d948;

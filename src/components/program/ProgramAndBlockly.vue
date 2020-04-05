@@ -1004,6 +1004,6 @@ svg.blocklySvg {
 }
 
 .btn-lab {
-  background-color: #d99414;
+  background-color: #fee042;
 }
 </style>

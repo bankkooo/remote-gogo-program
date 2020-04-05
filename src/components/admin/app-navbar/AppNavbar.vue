@@ -17,7 +17,6 @@
       <i id="collapse-icon"  class="fa"
         :class="'fa-chevron-circle-'+(isShowWidget ? 'left' : 'right')"
         :title="$t('navbar.'+(isShowWidget ? 'hide_widgets' : 'show_widgets'))"
-        v-tooltip.bottom="{ content: $t('navbar.'+(isShowWidget ? 'hide_widgets' : 'show_widgets'))}"
         v-on:click="toggleShowWidget()"></i>
     </div>
 
@@ -80,15 +79,14 @@
 
     <!-- ===================== Project Name ===================== -->
     <div v-if="isProgramTab" id="project-name" class="form-group">
-      <div class="input-group" v-tooltip.bottom="$t('project.form.name')">
+      <div class="input-group">
         <input v-model="projectName" maxlength="100" required/>
         <i class="bar"></i>
       </div>
     </div>
     <div v-if="isProgramTab" class="col nav-item dropdown navbar-dropdown">
       <a class="nav-link custom-link" href="#"
-        @click="$bus.$emit('saveProject')"
-        v-tooltip.bottom="$t('program.menus.save_desc')">
+        @click="$bus.$emit('saveProject')">
         <i id="navbar-save-icon" class="fa fa-save "></i>
       </a>
     </div>

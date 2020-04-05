@@ -1,12 +1,12 @@
 <template>
   <div class="ping-panel">
     <!-- {{ $store.getters.program.currentProjectId }}
+    v-tooltip.bottom="$t('gogoboard.ping_panel.beep')"
     <br>
     {{ $store.getters.program.toSaveProject }} -->
     <div class="row justify-content-center">
       <div class="col-sm-4 text-center mb-3">
         <button id="gogo-beep-icon" class="btn btn-info btn-with-icon rounded-icon" 
-          v-tooltip.bottom="$t('gogoboard.ping_panel.beep')"
           v-on:click="doGogoCmd('beep')">
           <div class="button-motor-control">
             <i id="beep-icon" class="fa fa-inverse fa-2x fa-bell"></i>
