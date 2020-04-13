@@ -108,7 +108,7 @@ const globalControl = {
   },
   
   sendCommandFirmware (data, callback) {
-    console.log(data)
+    // console.log(data)
     // var buffer = new ArrayBuffer(CONST.TX_PACKET_SIZE - 1)
     var cmd = new Array(CONST.TX_PACKET_SIZE).fill(0)
     // cmd[CONST.ENDPOINT]      = CONST.ENDPOINT_ID
@@ -964,8 +964,8 @@ export default{
     this.cloudCompile(logoCode, callbackSuccess)
   },
   mqttconnect(){
-    console.log("ss",ss)
-    console.log("messege = mqttconnectfunction")
+    //console.log("ss",ss)
+    console.log("messege = Mqtt connect function")
     //Paaho = require('./paho-mqtt-new')
     //client = new Paaho.Paho.MQTT.Client("soldier.cloudmqtt.com", /*30420*/34222,"bank99");
     //client = new Paaho.Paho.MQTT.Client("smart-teacher.cloudmqtt.com", /*30420*/443,"bank99");
@@ -1688,9 +1688,8 @@ export default{
     clearInterval(boolGblLoop);
   },
   compileAndDownloadSecond (data) {
-    console.log(data.data)
+    // console.log(data.data)
     clearInterval(boolGblLoop)
-    this.virtualgogo(data.data)
     //this.mqttsending("data.data")
     if (!data.result) {
       notification.warning(data.message || 'Error')
@@ -1713,6 +1712,7 @@ export default{
         })
       }
     })
+    this.virtualgogo(data.data)
   },
 
 }
