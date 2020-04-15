@@ -34,8 +34,8 @@
           <!--<i class="fa fa-circle-o-notch fa-spin fa-stack-2x"></i>-->
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
-            false ? 'fa-ban' : '',// ban and unban
-            false ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
+            labBan_1 ? 'fa-ban' : '',// ban and unban
+            labBan_1 ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
             ]"></i>
           <!--<img src="/static/gogo-img/remote.png" width="70" height="22">-->
 
@@ -56,8 +56,8 @@
             v-bind:class="[ isSelect == 2 ? 'fa-circle-o-notch fa-spin' : '' ]"></i>
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
-            false ? 'fa-ban' : '',// ban and unban
-            false ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
+            labBan_2 ? 'fa-ban' : '',// ban and unban
+            labBan_2 ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
             ]"></i>
         </a>
         <div class="row justify-content-center">
@@ -75,8 +75,8 @@
             v-bind:class="[ isSelect == 3 ? 'fa-circle-o-notch fa-spin' : '' ]"></i>
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
-            false ? 'fa-ban' : '',// ban and unban
-            false ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
+            labBan_3 ? 'fa-ban' : '',// ban and unban
+            labBan_3 ? 'lab-ban-active' : 'lab-ban-inactive', // true or false ? true : false
             ]"></i>
         </a>
         <div class="row justify-content-center">
@@ -108,8 +108,10 @@
 <script>
 import { mapGetters, mapMutations } from 'vuex'
 import LabDetailPanel from './LabDetailPanel.vue'
+import deviceControl from 'services/deviceControl'
 
-//var lab_selected = 0
+var lab_selected = null
+var clientId = null
 
 export default {
   name: 'lab-display-panel',
@@ -126,6 +128,9 @@ export default {
       labActive_1: false,
       labActive_2: false,
       labActive_3: false,
+      labBan_1: false,
+      labBan_2: false,
+      labBan_3: false
     }
   },
   methods: {
@@ -135,13 +140,23 @@ export default {
       var mQtt_ch
       var number = event
       if(number == 1){
-        mQtt_ch = 'Lab1'
+        if(this.labBan_1 == false){
+          mQtt_ch = 'Lab1'
+          clientId = deviceControl.sendClientId('Lab1')
+        }
+        
         //window.open("https://youtu.be/wFGb_3jqFE8?t=192", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
       }else if(number == 2){
-        mQtt_ch = 'Lab2'
+        if(this.labBan_2 == false){
+          mQtt_ch = 'Lab2'
+          clientId = deviceControl.sendClientId('Lab2')
+        }
         //window.open("https://youtu.be/IV1mC9yDY4o?t=23", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
       }else if(number == 3){
-        mQtt_ch = 'Lab3'
+        if(this.labBan_3 == false){
+          mQtt_ch = 'Lab3'
+          clientId = deviceControl.sendClientId('Lab3')
+        }
       }
       localStorage.setItem("mQtt_ch", mQtt_ch);
       console.log(number,":",mQtt_ch)
@@ -181,7 +196,8 @@ export default {
           //console.log('3:'+this.labActive_3)
           break;
       }*/
-      console.log('val:'+val)
+      val = val.split("/")
+      console.log('val:'+val.length)
       if (val=="lab-1-active"){
         this.labActive_1 = true;
         console.log('1:'+this.labActive_1)
@@ -203,6 +219,18 @@ export default {
         this.labActive_3 = false;
         console.log('1:'+this.labActive_1)
       }
+      if (val.length==2 && val[0] != clientId){
+        if(val[1] == "Lab1"){
+          this.labBan_1 = true
+        }else if (val[1] == "Lab2"){
+          this.labBan_2 = true
+        }else if (val[1] == "Lab3"){
+          this.labBan_3 = true
+        }
+      }
+    },
+    isSelect: function (val) {
+      
     }
   },
   mounted () {

@@ -24,17 +24,17 @@
                 </h5>
             </div>
                 <div class="col-sm-3 text-right" style="background-color:lightcyan;">
-                  <div class="btn btn-micro btn-nav col-sm-12 space" @click="chooseToShow('head1')" v-on:click="isActive = 2" v-bind:class="{ 'focus': isActive == 2}">
+                  <div class="btn btn-micro btn-nav col-sm-12 space" @click="chooseToShow('head1')">
                     รายละเอียด
                   </div>
                   <div class="row">
                     <div class="col-sm-12 text-right" style="background-color:lightcyan;">
-                    <div class="btn btn-micro btn-nav col-sm-12 space" @click="chooseToShow('tool1')" v-on:click="isActive = 2" v-bind:class="{ 'focus': isActive == 2}">
+                    <div class="btn btn-micro btn-nav col-sm-12 space" @click="chooseToShow('tool1')">
                       อุปกรณ์
                     </div>
                     </div>
                     <div class="col-sm-12 text-right" style="background-color:lightcyan;">
-                    <div class="btn btn-micro btn-nav col-sm-12 space" @click="chooseToShow('exercise')" v-on:click="isActive = 2" v-bind:class="{ 'focus': isActive == 2}">
+                    <div class="btn btn-micro btn-nav col-sm-12 space" @click="chooseToShow('exercise')">
                       แบบฝึกหัด
                     </div>
                     </div>

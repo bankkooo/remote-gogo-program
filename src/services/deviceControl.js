@@ -56,6 +56,8 @@ var ss = localStorage.getItem("sensor_val"); // sensor value
 //var PahoMQTT = require('./paho-mqtt-new')
 var randomstring = require("randomstring");
 
+var clientId = randomstring.generate(7)
+
 global.Paho = {
   MQTT: PahoMQTT
 }
@@ -970,7 +972,8 @@ export default{
     //client = new Paaho.Paho.MQTT.Client("soldier.cloudmqtt.com", /*30420*/34222,"bank99");
     //client = new Paaho.Paho.MQTT.Client("smart-teacher.cloudmqtt.com", /*30420*/443,"bank99");
     //client = new Paaho.Paho.MQTT.Client("35.198.231.150", 9001,randomstring.generate(7));
-    client = new Paho.MQTT.Client("35.198.231.150", 9001,randomstring.generate(7));
+    //var clientId = randomstring.generate(7)
+    client = new Paho.MQTT.Client("35.198.231.150", 9001,clientId);
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     var options = {
@@ -992,7 +995,7 @@ export default{
       message.destinationName = "remotelab/"+mQtt_ch;
       console.log(mQtt_ch);
       client.send(message);
-      client.subscribe("remotelab/labstatus");
+      client.subscribe("remotelab/+");
     }
     function doFail(e){
       console.log(e);
@@ -1015,7 +1018,7 @@ export default{
   },
   mqttsending ( msg ) {
     console.log("messege = ",msg)
-    cmdList =[];
+    cmdList = [];
     //const Paaho = require('./paho-mqtt')
     //Paaho = require('./paho-mqtt-new')
     console.log("MQTTonConnect");
@@ -1032,6 +1035,12 @@ export default{
   mqttreceive () {
     //console.log("getrcv :"+mQttmessege)
     return mQttmessege
+  },
+  sendClientId (Lab) {
+    var msg = []
+    msg.push(clientId+"/"+Lab)
+    this.mqttsending(msg)
+    return clientId
   },
 
   virtualgogo ( vByteCode ) {
