@@ -990,12 +990,12 @@ export default{
     client.connect(options);
     function onConnect() {
       console.log("MQTTonConnect");
+      client.subscribe("remotelab/+");
       var message = new Paho.MQTT.Message("reQconnect");
       var mQtt_ch = localStorage.getItem("mQtt_ch");
       message.destinationName = "remotelab/"+mQtt_ch;
       console.log(mQtt_ch);
       client.send(message);
-      client.subscribe("remotelab/+");
     }
     function doFail(e){
       console.log(e);
@@ -1008,38 +1008,32 @@ export default{
     }
     // called when a message arrives
     function onMessageArrived(message) {
-      console.log("onMessageArrived:"+message.payloadString);
+      // console.log("onMessageArrived:"+message.payloadString);
       localStorage.setItem("rcvmsg", message.payloadString);
       if (message.payloadString != 'nothing') {
         mQttmessege = message.payloadString;
       }
-      //document.getElementById("demo").innerHTML = message.payloadString;
     }
   },
   mqttsending ( msg ) {
-    console.log("messege = ",msg)
     cmdList = [];
-    //const Paaho = require('./paho-mqtt')
-    //Paaho = require('./paho-mqtt-new')
-    console.log("MQTTonConnect");
     var mQtt_ch = localStorage.getItem("mQtt_ch");
-    //client.subscribe("remotelab/lablstatus");
     for(var i=0;i<msg.length;i++){
       var message = new Paho.MQTT.Message(msg[i]);
       message.destinationName = "remotelab/"+mQtt_ch;
-      //console.log("loopmsg",msg[i]);
       client.send(message);
     }
-    //client.send(message);
   },
   mqttreceive () {
-    //console.log("getrcv :"+mQttmessege)
     return mQttmessege
   },
   sendClientId (Lab) {
     var msg = []
     msg.push(clientId+"/"+Lab)
+    var pastmQtt_ch = localStorage.getItem("mQtt_ch");
+    localStorage.setItem("mQtt_ch", "labstatus");
     this.mqttsending(msg)
+    localStorage.setItem("mQtt_ch", pastmQtt_ch);
     return clientId
   },
 
@@ -1154,7 +1148,7 @@ export default{
               this.Repeat(bufferTemp,_imm);    
               break;
           case 10: // ---- If ----- function
-              console.log("at if function ");
+              // console.log("at if function ");
               var bufferIf = [];
               var indexGblBuf = parseInt(gblBufferTest.length, 10);
               for(var j=0;j<gblBufferTest[indexGblBuf-1].length;j++){
@@ -1292,7 +1286,7 @@ export default{
               var numCompare = imm1byte.pop();
               ss = localStorage.getItem("sensor_val"); // sensor value
               ss = ss.split(",")
-              console.log(numSensor)
+              // console.log(numSensor)
               valuesensor = ss;
               //console.log("sensor[",numSensor,"]:",valuesensor," > ",numCompare);
               if (valuesensor[numSensor-1] > numCompare){
@@ -1429,14 +1423,14 @@ export default{
           case 49:
               var cmdstr = "motorOn";
               cmdList.push(cmdstr)
-              console.log(cmdList)
+              // console.log(cmdList)
               //this.sendCmd(cmdstr);
               break;
           case 50:
               var _imm = imm1byte.pop();
               _imm = _imm * 100;
               this.sleepMillisec(_imm);
-              console.log("wait _imm : ",_imm);
+              // console.log("wait _imm : ",_imm);
               break;
           case 51:
               var cmdstr = "motorOff";
@@ -1586,7 +1580,7 @@ export default{
           case undefined:
               break;
           default:
-              console.log("none jahh ",_cmdOpcode);
+              // console.log("none jahh ",_cmdOpcode);
               break;
       }
   },
@@ -1619,7 +1613,7 @@ export default{
     var self = this;
     //for (var i = 0; i < 4; i++) {
     boolGblLoop = setInterval(function() {
-        console.log("---------------------- loop for loop ",count,"---------------------------")
+        // console.log("---------------------- loop for loop ",count,"---------------------------")
         count++;
         for (var j = 0; j < tempLenghInForLoop; j++) {
             loopBuffer.push(_gblBufferInForLoop[j]);
@@ -1690,7 +1684,7 @@ export default{
         old_cmd = str;
       }
     }*/
-    console.log(str)
+    // console.log(str)
     this.mqttsending(str)
   },
   stopLoop(){

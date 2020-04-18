@@ -37,7 +37,7 @@ const state = {
   gogo: deviceProcess.getDefault(),
   rpi: deviceProcess.getDefaultRpi(),
   keyValue: deviceProcess.getdefaultKeyValue(),
-  status: '',
+  labstatus: '',
   socket: {
     isConnected: false,
     message: '',
@@ -108,7 +108,7 @@ const mutations = {
     // }
     var processedData = deviceProcess.processHID(message.stream)
     var processedStatus = deviceControl.mqttreceive()
-    state.status = processedStatus
+    state.labstatus = processedStatus
     // console.log(processedData.data.motors)
 
     if (processedData.type === PACKAGETYPE.GOGOBOARD) {

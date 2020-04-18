@@ -26,11 +26,11 @@
       <div class="lab-area">
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
           v-bind:class="[labActive_1 ? 'lab-active' : 'lab-inactive']"
-          v-on:click="selectLab(1)" @click="isSelect = 1" >
+          v-on:click="selectLab(1)">
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>
           <i class="lab-icon lab-icon-1 icon-lab-1 fa-stack-1x "></i>
           <i class="lab-select fa fa-stack-2x"
-            v-bind:class="[ isSelect == 1 ? 'fa-circle-o-notch fa-spin' : '' ]"></i>
+            v-bind:class="[ isSelect == 1 ? 'fa-circle-o' : '' ]"></i>
           <!--<i class="fa fa-circle-o-notch fa-spin fa-stack-2x"></i>-->
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
@@ -49,11 +49,11 @@
       <div class="lab-area">
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
           v-bind:class="[labActive_2 ? 'lab-active' : 'lab-inactive']"
-          v-on:click="selectLab(2)" @click="isSelect = 2">
+          v-on:click="selectLab(2)">
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>
           <i class="lab-icon lab-icon-1 icon-lab-2 fa-stack-1x "></i>
           <i class="lab-select fa fa-stack-2x"
-            v-bind:class="[ isSelect == 2 ? 'fa-circle-o-notch fa-spin' : '' ]"></i>
+            v-bind:class="[ isSelect == 2 ? 'fa-circle-o' : '' ]"></i>
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
             labBan_2 ? 'fa-ban' : '',// ban and unban
@@ -68,11 +68,11 @@
       <div class="lab-area">
         <a id="gogo-lab-icon-a" class="gogo-monitor-lab fa-stack fa-2x" href="javascript:;"
           v-bind:class="[labActive_3 ? 'lab-active' : 'lab-inactive']"
-          v-on:click="selectLab(3)" @click="isSelect = 3">
+          v-on:click="selectLab(3)">
           <i class="lab-bg fa fa-circle fa-stack-2x"></i>
           <i class="lab-icon lab-icon-1 icon-lab-3 fa-stack-1x "></i>
           <i class="lab-select fa fa-stack-2x"
-            v-bind:class="[ isSelect == 3 ? 'fa-circle-o-notch fa-spin' : '' ]"></i>
+            v-bind:class="[ isSelect == 3 ? 'fa-circle-o' : '' ]"></i>
           <i class="lab-ban fa fa-stack-2x"
             v-bind:class="[
             labBan_3 ? 'fa-ban' : '',// ban and unban
@@ -136,96 +136,73 @@ export default {
   methods: {
     selectLab (event) {
       //console.log(event)
-      this.$emit('childToParent', event)
       var mQtt_ch
       var number = event
       if(number == 1){
         if(this.labBan_1 == false){
           mQtt_ch = 'Lab1'
-          clientId = deviceControl.sendClientId('Lab1')
+          clientId = deviceControl.sendClientId('Lab1/Labchange/Labselect')
+          this.isSelect = 1
+          this.$emit('childToParent', event)
         }
         
         //window.open("https://youtu.be/wFGb_3jqFE8?t=192", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
       }else if(number == 2){
         if(this.labBan_2 == false){
           mQtt_ch = 'Lab2'
-          clientId = deviceControl.sendClientId('Lab2')
+          clientId = deviceControl.sendClientId('Lab2/Labchange/Labselect')
+          this.isSelect = 2
+          this.$emit('childToParent', event)
         }
         //window.open("https://youtu.be/IV1mC9yDY4o?t=23", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
       }else if(number == 3){
         if(this.labBan_3 == false){
           mQtt_ch = 'Lab3'
-          clientId = deviceControl.sendClientId('Lab3')
+          clientId = deviceControl.sendClientId('Lab3/Labchange/Labselect')
+          this.isSelect = 3
+          this.$emit('childToParent', event)
         }
       }
       localStorage.setItem("mQtt_ch", mQtt_ch);
-      console.log(number,":",mQtt_ch)
+      // console.log(number,":",mQtt_ch)
     },
     ...mapMutations([
       'doGogoCmdObj', // map `this.doGogoCmd()` to `this.$store.commit('doGogoCmd')`
     ]),
   },
   watch: {
-    /*labActive: function (val) {
-      console.log(val+":"+this.isLab)
-    },*/
     parentData: function (val) {
-      /*switch (val) {
-        case "lab-1-active":
-          this.labActive_1 = true;
-          //console.log('1:'+this.labActive_1)
-          break;
-        case "lab-1-inactive":
-          this.labActive_1 = false;
-          //console.log('1:'+this.labActive_1)
-          break;
-        case 'lab-2-active':
-          this.labActive_2 = true;
-          //console.log('2:'+this.labActive_2)
-          break;
-        case 'lab-2-inactive':
-          this.labActive_2 = false;
-          //console.log('2:'+this.labActive_2)
-          break;
-        case 'lab-3-active':
-          this.labActive_3 = true;
-          //console.log('3:'+this.labActive_3)
-          break;
-        case 'lab-3-inactive':
-          this.labActive_3 = false;
-          //console.log('3:'+this.labActive_3)
-          break;
-      }*/
       val = val.split("/")
-      console.log('val:'+val.length)
+      // console.log('val:'+val.length)
       if (val=="lab-1-active"){
         this.labActive_1 = true;
-        console.log('1:'+this.labActive_1)
       }else if(val=="lab-1-inactive"){
         this.labActive_1 = false;
-        console.log('1:'+this.labActive_1)
       }
       if (val=="lab-2-active"){
         this.labActive_2 = true;
-        console.log('1:'+this.labActive_1)
       }else if(val=="lab-2-inactive"){
         this.labActive_2 = false;
-        console.log('1:'+this.labActive_1)
       }
       if (val=="lab-3-active"){
         this.labActive_3 = true;
-        console.log('1:'+this.labActive_1)
       }else if(val=="lab-3-inactive"){
         this.labActive_3 = false;
-        console.log('1:'+this.labActive_1)
       }
-      if (val.length==2 && val[0] != clientId){
-        if(val[1] == "Lab1"){
+      if (val.length==2 && val[1] != clientId){
+        // console.log(val)
+        if(val[0] == "Lab-1-ban"){
           this.labBan_1 = true
-        }else if (val[1] == "Lab2"){
+        }else if (val[0] == "Lab-2-ban"){
           this.labBan_2 = true
-        }else if (val[1] == "Lab3"){
+        }else if (val[0] == "Lab-3-ban"){
           this.labBan_3 = true
+        }else if(val[0] == "Lab-1-unban"){
+          this.labBan_1 = false
+        }else if (val[0] == "Lab-2-unban"){
+          this.labBan_2 = false
+        }else if (val[0] == "Lab-3-unban"){
+          this.labBan_3 = false
         }
       }
     },
@@ -265,7 +242,8 @@ export default {
 }
 
 .lab-select {
-  color: rgb(255, 236, 152);
+  // color: rgb(255, 236, 152);
+  color: green;
 }
 
 .lab-active {

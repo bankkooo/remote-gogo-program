@@ -3,20 +3,27 @@
     
     <lab-display-panel :parentData="labStatus" v-on:childToParent="onChildClick"></lab-display-panel>
     <!--<LabDisplayPanel :parentData="myData" v-on:childToParent="onChildClick"></LabDisplayPanel>-->
-    <vue-tabs>
-      <v-tab :title="$t('gogoboard.tabs.lab_detail')">
-        <lab-detail-panel :parentData="fromChild" v-on:detailToStatus="onUserEnter" v-on:detailToStatuss="onCallDetail"></lab-detail-panel>
-      </v-tab>
+    <div v-if="mode==0">
+      <vue-tabs>
+        <v-tab :title="$t('gogoboard.tabs.lab_detail')">
+          <lab-detail-panel :parentData="fromChild" v-on:detailToStatus="onUserEnter" v-on:detailToStatuss="onCallDetail"></lab-detail-panel>
+        </v-tab>
+        <v-tab :title="$t('gogoboard.tabs.lab_status')">
+          <lab-status-panel :parentData="fromChild" :parentData2="fromDetail" ></lab-status-panel>
+        </v-tab>
+      </vue-tabs>
+    </div>
 
-      <!--<v-tab :title="$t('gogoboard.tabs.lab_test')">
-        <LabDetailPanel :parentDat="fromChild"></LabDetailPanel>
-        999
-      </v-tab>-->
-
-      <v-tab :title="$t('gogoboard.tabs.lab_status')">
-        <lab-status-panel :parentData="fromChild" :parentData2="fromDetail" ></lab-status-panel>
-      </v-tab>
-    </vue-tabs>
+    <div v-else-if="mode==1">
+      <vue-tabs>
+        <v-tab :title="$t('gogoboard.tabs.lab_status')">
+          <lab-status-panel :parentData="fromChild" :parentData2="fromDetail" ></lab-status-panel>
+        </v-tab>
+        <v-tab :title="$t('gogoboard.tabs.lab_detail')">
+          <lab-detail-panel :parentData="fromChild" v-on:detailToStatus="onUserEnter" v-on:detailToStatuss="onCallDetail"></lab-detail-panel>
+        </v-tab>
+      </vue-tabs>
+    </div>
 
     <!-- <div class="row">
       <div class="col-sm-12">
@@ -48,7 +55,7 @@ import 'vue-nav-tabs/themes/paper.css'
 
 export default {
   name: 'dashboard-panel',
-  // props: ['motors'],
+  props: ['mode'],
   components: {
     LabDisplayPanel,
     LabDetailPanel,

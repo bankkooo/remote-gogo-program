@@ -5,7 +5,7 @@
       <div class="col-md-12 col-lg-7 offset-lg-0 col-xl-6 offset-xl-1">
 
         <div class="row">
-          <div class="col-md-6 d-flex">
+          <div class="col-md-6 d-flex" >
             <vuestic-widget class="chat-widget"
               :headerBgColor="'#a5d442'" :headerTextColor="'#fbfff3'"
               :icon="(gogo.info.boardType == 0 ? 'fa-warning' : 'fa-plug')"
@@ -38,12 +38,17 @@
 
 
       <div class="col-md-8 offset-md-2 col-lg-5 offset-lg-0 col-xl-4 d-flex">
-        <vuestic-widget class="chat-widget"
+        <!--<vuestic-widget class="chat-widget"
           :icon="'fa-toggle-on'"
           :headerBgColor="'#f3a73c'" :headerTextColor="'#fff0dc'"
           :headerText="$t('gogoboard.headers.motors')">
-          <!-- <motor-panel :motors="gogo.motors"></motor-panel> -->
           <motor-panel></motor-panel>
+        </vuestic-widget>-->
+        <vuestic-widget class="chat-widget dashboard-widget" 
+          :icon="'a fa-check-circle-o'"
+          :headerBgColor="'#f59d22'" :headerTextColor="'#fff0dc'"
+          :headerText="$t('gogoboard.headers.dashboards')">
+          <dashboard-panel :mode="Mode"></dashboard-panel>
         </vuestic-widget>
       </div>
     </div>
@@ -59,6 +64,7 @@ import MotorPanel from './gogo-elements/MotorPanel.vue'
 import SensorPanel from './gogo-elements/SensorPanel.vue'
 import DisplayPanel from './gogo-elements/DisplayPanel.vue'
 import PingPanel from './gogo-elements/PingPanel.vue'
+import DashboardPanel from 'components/gogoboard/gogo-elements/DashboardPanel.vue'
 
 import { mapGetters } from 'vuex'
 
@@ -80,12 +86,21 @@ export default {
     MotorPanel,
     SensorPanel,
     DisplayPanel,
-    PingPanel
+    PingPanel,
+    DashboardPanel
   },
   data () {
     return {
-      count: 1
+      count: 1,
+      Mode: 0
     }
+  },
+  created () {
+    var mqttch = 'defaultchannel'
+    localStorage.setItem('mQtt_ch', mqttch)
+    console.log('created:', mqttch)
+    deviceControl.mqttconnect()
+    // deviceControl.mqttsending("testcreate")
   },
   mounted () {
     deviceControl.setSocket(this.$socket)

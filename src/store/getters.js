@@ -13,7 +13,7 @@ const keyValue = state => state.app.keyValue
 const socket = state => state.app.socket
 const gogoControls = state => state.app.gogoControls
 
-const labStatus = state => state.app.status
+const labStatus = state => state.app.labstatus
 
 // const program = state => state.app.program
 

@@ -4,7 +4,7 @@
         :icon="'a fa-check-circle-o'"
         :headerBgColor="'#f59d22'" :headerTextColor="'#fff0dc'"
         :headerText="$t('gogoboard.headers.dashboards')">
-        <dashboard-panel :irValue="gogo.irValue"></dashboard-panel>
+        <dashboard-panel :mode="Mode"></dashboard-panel>
     </vuestic-widget>
 
     <vuestic-widget class="chat-widget lab-widget" 
@@ -62,6 +62,7 @@ export default {
   },
   data () {
     return {
+      Mode: 1
     }
   },
   mounted () {
