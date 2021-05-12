@@ -27,7 +27,7 @@
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0",
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.9.4",
     "detect-browser": "^1.7.1",
     "element-resize-detector": "^1.1.12",
     "enjoyhint.js": "^1.2.1",
