@@ -42,7 +42,7 @@
     "kewler": "^1.0.8",
     "leaflet-map": "^0.2.1",
     "medium-editor": "^5.23.3",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "mqtt": "^3.0.0",
     "node-blockly": "^1.0.35",
     "normalize.css": "7.0.0",
